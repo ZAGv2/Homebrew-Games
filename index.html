@@ -43,6 +43,19 @@ nav a {
 .hero h1 {
     font-size:28px;
     color:#1e90ff;
+    margin-bottom:15px;
+}
+
+/* SEARCH BAR */
+#searchBar {
+    width:100%;
+    max-width:400px;
+    padding:10px 15px;
+    border-radius:8px;
+    border:1px solid #ccc;
+    font-size:14px;
+    margin:0 auto 30px;
+    display:block;
 }
 
 /* GRID */
@@ -50,7 +63,7 @@ nav a {
     display:grid;
     grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
     gap:20px;
-    padding:20px;
+    padding:0 20px 20px 20px;
 }
 
 .card {
@@ -142,36 +155,23 @@ footer {
 
 <section class="hero">
     <h1>Homebrew Games</h1>
+    <input type="text" id="searchBar" placeholder="Search by title or console...">
 </section>
 
 <!-- GRID VIEW -->
-<section class="grid">
-
-    <!-- CLICKABLE CARD -->
+<section class="grid" id="gameGrid">
+    <!-- Example clickable card -->
     <a href="super-mario-homebrew.html" class="card">
         <img src="https://via.placeholder.com/300x160.png?text=Super+Mario" alt="Super Mario Homebrew">
         <h3>Super Mario Homebrew</h3>
         <p>Console: NES</p>
     </a>
-
-    <!-- NON CLICKABLE CARDS -->
-    <div class="card">
-        <img src="https://via.placeholder.com/300x160.png?text=Zelda+Adventure" alt="Zelda Adventure">
-        <h3>Zelda Link Adventure</h3>
-        <p>Console: NES</p>
-    </div>
-
-    <div class="card">
-        <img src="https://via.placeholder.com/300x160.png?text=Space+Runner" alt="Space Runner">
-        <h3>Space Runner</h3>
-        <p>Console: GameBoy</p>
-    </div>
-
+    <!-- Other cards can be added here -->
 </section>
 
 <!-- TABLE VIEW -->
 <div class="table-container">
-<table>
+<table id="gameTable">
     <tr>
         <th>Title</th>
         <th>Console</th>
@@ -184,23 +184,45 @@ footer {
         <td>JaneDoe</td>
         <td>2025</td>
     </tr>
-    <tr>
-        <td>Zelda Link Adventure</td>
-        <td>NES</td>
-        <td>RetroDev</td>
-        <td>2024</td>
-    </tr>
-    <tr>
-        <td>Space Runner</td>
-        <td>GameBoy</td>
-        <td>IndieMaker</td>
-        <td>2026</td>
-    </tr>
+    <!-- Other table rows can be added here -->
 </table>
 </div>
 
 <footer>
     © 2026 ZAG Archive
 </footer>
+
+<script>
+// Search function
+const searchBar = document.getElementById('searchBar');
+searchBar.addEventListener('keyup', function() {
+    const filter = searchBar.value.toLowerCase();
+
+    // Filter grid cards
+    const cards = document.querySelectorAll('#gameGrid .card');
+    cards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const consoleName = card.querySelector('p').textContent.toLowerCase();
+        if(title.includes(filter) || consoleName.includes(filter)) {
+            card.style.display = '';
+        } else {
+            card.style.display = 'none';
+        }
+    });
+
+    // Filter table rows
+    const tableRows = document.querySelectorAll('#gameTable tr:not(:first-child)');
+    tableRows.forEach(row => {
+        const title = row.cells[0].textContent.toLowerCase();
+        const consoleName = row.cells[1].textContent.toLowerCase();
+        if(title.includes(filter) || consoleName.includes(filter)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+});
+</script>
+
 </body>
 </html>
