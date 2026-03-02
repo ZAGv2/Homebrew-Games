@@ -60,7 +60,13 @@ nav a {
     padding:15px;
     text-align:center;
     box-shadow:0 6px 15px rgba(0,0,0,0.05);
-    cursor:default;
+    text-decoration:none;
+    color:inherit;
+    transition:0.2s ease;
+}
+
+.card:hover {
+    transform:translateY(-5px);
 }
 
 .card img {
@@ -143,12 +149,14 @@ footer {
 <!-- GRID VIEW -->
 <section class="grid">
 
-    <div class="card">
+    <!-- CLICKABLE CARD -->
+    <a href="super-mario-homebrew.html" class="card">
         <img src="https://via.placeholder.com/300x160.png?text=Super+Mario">
         <h3>Super Mario Homebrew</h3>
         <p>Console: NES</p>
-    </div>
+    </a>
 
+    <!-- NON CLICKABLE TEST CARDS -->
     <div class="card">
         <img src="https://via.placeholder.com/300x160.png?text=Zelda+Adventure">
         <h3>Zelda Link Adventure</h3>
