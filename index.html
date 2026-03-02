@@ -14,6 +14,8 @@
   .hero h1 { font-size:36px; color:#1e90ff; margin-bottom:10px; }
   .hero p { font-size:18px; color:#555; }
 
+  .grid, .game-table { transition: all 0.3s ease; }
+
   /* GRID */
   .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; padding:30px 50px; }
   .card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 6px 12px rgba(0,0,0,0.08); cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; }
@@ -28,11 +30,11 @@
   .game-table th { background:#f7f7f7; color:#1e90ff; }
   .game-table tr:hover { background:#f0f8ff; cursor:pointer; }
 
-  /* DETAIL MODAL */
-  .game-detail { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:200; }
-  .game-detail .content { background:#fff; max-width:800px; width:90%; padding:20px; border-radius:12px; position:relative; }
+  /* FULL GAME DETAIL */
+  .game-detail { display:none; max-width:900px; margin:50px auto; background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.1); }
   .game-detail img { max-width:100%; border-radius:10px; margin-bottom:15px; }
-  .close-btn { position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer; color:#1e90ff; font-weight:bold; }
+  .back-btn { background:#1e90ff; color:#fff; border:none; padding:10px 20px; font-size:14px; border-radius:6px; cursor:pointer; margin-bottom:15px; }
+  .back-btn:hover { background:#0066cc; }
 
   footer { background:#fff; padding:30px 50px; display:flex; justify-content:space-between; flex-wrap:wrap; border-top:1px solid #ddd; color:#555; }
   footer div { margin-bottom:15px; }
@@ -60,13 +62,13 @@
 </section>
 
 <!-- GRID -->
-<section class="grid">
-  <div class="card" onclick="showDetail('super-mario')">
+<section id="grid-section" class="grid">
+  <div class="card" onclick="openGame('super-mario')">
     <img src="https://via.placeholder.com/200x120.png?text=Super+Mario" alt="Super Mario Homebrew">
     <h3>Super Mario Homebrew</h3>
     <p>Console: NES</p>
   </div>
-  <div class="card" onclick="showDetail('zelda-link')">
+  <div class="card" onclick="openGame('zelda-link')">
     <img src="https://via.placeholder.com/200x120.png?text=Zelda+Link" alt="Zelda Link Homebrew">
     <h3>Zelda Link Adventure</h3>
     <p>Console: NES</p>
@@ -74,25 +76,23 @@
 </section>
 
 <!-- TABLE -->
-<table class="game-table">
+<table class="game-table" id="table-section">
   <thead><tr><th>Game</th><th>Console</th><th>Creator</th></tr></thead>
   <tbody>
-    <tr onclick="showDetail('super-mario')"><td>Super Mario Homebrew</td><td>NES</td><td>JaneDoe</td></tr>
-    <tr onclick="showDetail('zelda-link')"><td>Zelda Link Adventure</td><td>NES</td><td>JohnSmith</td></tr>
+    <tr onclick="openGame('super-mario')"><td>Super Mario Homebrew</td><td>NES</td><td>JaneDoe</td></tr>
+    <tr onclick="openGame('zelda-link')"><td>Zelda Link Adventure</td><td>NES</td><td>JohnSmith</td></tr>
   </tbody>
 </table>
 
-<!-- DETAIL MODAL -->
-<div id="game-detail" class="game-detail">
-  <div class="content">
-    <span class="close-btn" onclick="closeDetail()">×</span>
-    <h1 id="detail-title"></h1>
-    <p><strong>Console:</strong> <span id="detail-console"></span></p>
-    <p><strong>Creator:</strong> <span id="detail-creator"></span></p>
-    <p><strong>Description:</strong> <span id="detail-desc"></span></p>
-    <img id="detail-img" src="" alt="Game Cover">
-  </div>
-</div>
+<!-- FULL GAME DETAIL -->
+<section id="game-detail" class="game-detail">
+  <button class="back-btn" onclick="backToGrid()">← Back to Games</button>
+  <h1 id="detail-title"></h1>
+  <p><strong>Console:</strong> <span id="detail-console"></span></p>
+  <p><strong>Creator:</strong> <span id="detail-creator"></span></p>
+  <p><strong>Description:</strong> <span id="detail-desc"></span></p>
+  <img id="detail-img" src="" alt="Game Cover">
+</section>
 
 <footer>
   <div>
@@ -113,30 +113,37 @@
       title: "Super Mario Homebrew",
       console: "NES",
       creator: "JaneDoe",
-      desc: "This is a test page for Super Mario Homebrew. Includes cover, description, and screenshots.",
+      desc: "This is a full-page view for Super Mario Homebrew. Shows cover, description, and screenshots.",
       img: "https://via.placeholder.com/400x200.png?text=Super+Mario+Homebrew"
     },
     "zelda-link": {
       title: "Zelda Link Adventure",
       console: "NES",
       creator: "JohnSmith",
-      desc: "This is a test page for Zelda Link Adventure Homebrew. Includes cover, description, and screenshots.",
+      desc: "Full-page view for Zelda Link Adventure Homebrew. Includes cover, description, and screenshots.",
       img: "https://via.placeholder.com/400x200.png?text=Zelda+Link+Adventure"
     }
   };
 
-  function showDetail(id){
+  function openGame(id){
     const game = games[id];
     document.getElementById("detail-title").innerText = game.title;
     document.getElementById("detail-console").innerText = game.console;
     document.getElementById("detail-creator").innerText = game.creator;
     document.getElementById("detail-desc").innerText = game.desc;
     document.getElementById("detail-img").src = game.img;
-    document.getElementById("game-detail").style.display = "flex";
+
+    // Hide grid/table, show detail
+    document.getElementById("grid-section").style.display = "none";
+    document.getElementById("table-section").style.display = "none";
+    document.getElementById("game-detail").style.display = "block";
+    window.scrollTo(0,0);
   }
 
-  function closeDetail(){
+  function backToGrid(){
     document.getElementById("game-detail").style.display = "none";
+    document.getElementById("grid-section").style.display = "grid";
+    document.getElementById("table-section").style.display = "table";
   }
 </script>
 
