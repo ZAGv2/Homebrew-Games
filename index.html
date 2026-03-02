@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Super Mario Homebrew - ZAG Archive</title>
+<title>Homebrew Games - ZAG Archive</title>
 <style>
   body { margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#f0f2f5; color:#222; }
-  
+
   /* HEADER */
   header { 
     background:#fff; 
@@ -23,75 +23,27 @@
   nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; }
   nav a:hover { color:#1e90ff; }
 
-  /* HERO / COVER */
-  .cover {
-    position: relative;
-    text-align:center;
-    color:#fff;
-    background: #000;
-    padding:80px 20px 50px;
-  }
-  .cover img {
-    max-width:300px;
-    border-radius:15px;
-    box-shadow:0 6px 12px rgba(0,0,0,0.3);
-  }
-  .cover h1 { font-size:36px; margin:20px 0 10px; }
-  .cover p { font-size:16px; margin:5px 0; }
+  /* HERO */
+  .hero { text-align:center; padding:50px 20px; }
+  .hero h1 { font-size:36px; color:#1e90ff; margin-bottom:10px; }
+  .hero p { font-size:18px; color:#555; }
 
-  /* DESCRIPTION */
-  .description {
-    padding:30px 50px;
-    background:#fff;
-    margin:20px auto;
-    border-radius:12px;
-    max-width:900px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.08);
-  }
-  .description h2 { font-size:22px; color:#1e90ff; margin-bottom:15px; }
-  .description p { font-size:16px; line-height:1.6; color:#555; }
+  /* GRID */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; padding:30px 50px; }
+  .card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 6px 12px rgba(0,0,0,0.08); cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; }
+  .card:hover { transform:translateY(-6px); box-shadow:0 12px 18px rgba(0,0,0,0.12); }
+  .card img { width:100%; border-radius:10px; margin-bottom:12px; }
+  .card h3 { font-size:18px; margin-bottom:6px; color:#1e90ff; }
+  .card p { font-size:14px; color:#555; }
 
-  /* SCREENSHOTS */
-  .screenshots {
-    display:flex;
-    flex-wrap:wrap;
-    gap:15px;
-    justify-content:center;
-    padding:30px;
-  }
-  .screenshots img {
-    max-width:250px;
-    border-radius:12px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  }
-
-  /* DOWNLOAD BUTTON */
-  .download-btn {
-    display:block;
-    text-align:center;
-    margin:30px auto;
-  }
-  .download-btn a {
-    background:#1e90ff;
-    color:#fff;
-    text-decoration:none;
-    padding:12px 30px;
-    border-radius:8px;
-    font-size:16px;
-    transition:background 0.2s;
-  }
-  .download-btn a:hover { background:#0066cc; }
+  /* TABLE / LIST */
+  .game-table { width:90%; margin:20px auto 60px; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 12px rgba(0,0,0,0.08); }
+  .game-table th, .game-table td { padding:12px 15px; text-align:left; border-bottom:1px solid #ddd; font-size:14px; }
+  .game-table th { background:#f7f7f7; color:#1e90ff; }
+  .game-table tr:hover { background:#f0f8ff; cursor:pointer; }
 
   /* FOOTER */
-  footer {
-    background:#fff;
-    padding:30px 50px;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    border-top:1px solid #ddd;
-    color:#555;
-  }
+  footer { background:#fff; padding:30px 50px; display:flex; justify-content:space-between; flex-wrap:wrap; border-top:1px solid #ddd; color:#555; }
   footer div { margin-bottom:15px; }
   footer h4 { margin-bottom:8px; font-size:16px; color:#333; }
   footer a { text-decoration:none; color:#1e90ff; font-size:14px; display:block; margin-bottom:4px; }
@@ -99,8 +51,8 @@
 
   /* RESPONSIVE */
   @media (max-width:768px){
-    .description { padding:20px; }
-    .screenshots img { max-width:45%; }
+    .grid { grid-template-columns:1fr; padding:20px; }
+    .game-table { width:100%; }
     header { flex-direction:column; align-items:flex-start; }
     header nav { margin-top:10px; }
   }
@@ -117,31 +69,51 @@
   </nav>
 </header>
 
-<section class="cover">
-  <img src="https://via.placeholder.com/300x200.png?text=Super+Mario+Homebrew" alt="Super Mario Homebrew Cover">
-  <h1>Super Mario Homebrew</h1>
-  <p>Creator: JohnDoe</p>
-  <p>Console: NES</p>
+<section class="hero">
+  <h1>Homebrew Games</h1>
+  <p>Browse community-made games for multiple consoles</p>
 </section>
 
-<section class="description">
-  <h2>Description</h2>
-  <p>This is a brand new Super Mario adventure created by the community. Explore new levels, power-ups, and enemies in this NES homebrew game. Perfect for fans of classic Mario titles!</p>
+<!-- GRID of featured games -->
+<section class="grid">
+  <div class="card" onclick="window.location.href='games/super-mario-homebrew.html'">
+    <img src="https://via.placeholder.com/200x120.png?text=Super+Mario" alt="Super Mario Homebrew">
+    <h3>Super Mario Homebrew</h3>
+    <p>Console: NES</p>
+  </div>
+  <div class="card" onclick="window.location.href='games/zelda-homebrew.html'">
+    <img src="https://via.placeholder.com/200x120.png?text=Zelda+Adventure" alt="Zelda Adventure Homebrew">
+    <h3>Zelda Adventure Homebrew</h3>
+    <p>Console: NES</p>
+  </div>
 </section>
 
-<section class="screenshots">
-  <img src="https://via.placeholder.com/250x150.png?text=Screenshot+1" alt="Screenshot 1">
-  <img src="https://via.placeholder.com/250x150.png?text=Screenshot+2" alt="Screenshot 2">
-  <img src="https://via.placeholder.com/250x150.png?text=Screenshot+3" alt="Screenshot 3">
-</section>
-
-<div class="download-btn">
-  <a href="#">Download Game</a>
-</div>
+<!-- TABLE / LIST of more games -->
+<table class="game-table">
+  <thead>
+    <tr>
+      <th>Game</th>
+      <th>Console</th>
+      <th>Creator</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr onclick="window.location.href='games/pokemon-homebrew.html'">
+      <td>Pokemon Homebrew</td>
+      <td>GBA</td>
+      <td>JaneDoe</td>
+    </tr>
+    <tr onclick="window.location.href='games/mario-racing-homebrew.html'">
+      <td>Mario Racing Homebrew</td>
+      <td>NES</td>
+      <td>JohnSmith</td>
+    </tr>
+  </tbody>
+</table>
 
 <footer>
   <div>
-    <h4>About ZAGArchive</h4>
+    <h4>About ZAG Archive</h4>
     <p>A hub for homebrew games, ROM hacks, and community resources.</p>
   </div>
   <div>
