@@ -4,26 +4,12 @@
 <meta charset="UTF-8">
 <title>Homebrew Games - ZAG Archive</title>
 <style>
-  body { margin:0; font-family:'Segoe UI', Tahoma, sans-serif; background:#f0f2f5; color:#222; }
-
-  /* HEADER */
-  header { 
-    background:#fff; 
-    padding:15px 40px; 
-    display:flex; 
-    justify-content:space-between; 
-    align-items:center; 
-    box-shadow:0 2px 6px rgba(0,0,0,0.1); 
-    position:sticky; 
-    top:0; 
-    z-index:100;
-  }
+  body { margin:0; font-family:'Segoe UI', sans-serif; background:#f0f2f5; color:#222; }
+  header { background:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
   .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
-  .site-title span { margin-left:5px; }
   nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; }
   nav a:hover { color:#1e90ff; }
 
-  /* HERO */
   .hero { text-align:center; padding:50px 20px; }
   .hero h1 { font-size:36px; color:#1e90ff; margin-bottom:10px; }
   .hero p { font-size:18px; color:#555; }
@@ -42,20 +28,19 @@
   .game-table th { background:#f7f7f7; color:#1e90ff; }
   .game-table tr:hover { background:#f0f8ff; cursor:pointer; }
 
-  /* FOOTER */
+  /* DETAIL MODAL */
+  .game-detail { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.7); justify-content:center; align-items:center; z-index:200; }
+  .game-detail .content { background:#fff; max-width:800px; width:90%; padding:20px; border-radius:12px; position:relative; }
+  .game-detail img { max-width:100%; border-radius:10px; margin-bottom:15px; }
+  .close-btn { position:absolute; top:10px; right:15px; font-size:20px; cursor:pointer; color:#1e90ff; font-weight:bold; }
+
   footer { background:#fff; padding:30px 50px; display:flex; justify-content:space-between; flex-wrap:wrap; border-top:1px solid #ddd; color:#555; }
   footer div { margin-bottom:15px; }
   footer h4 { margin-bottom:8px; font-size:16px; color:#333; }
   footer a { text-decoration:none; color:#1e90ff; font-size:14px; display:block; margin-bottom:4px; }
   footer a:hover { text-decoration:underline; }
 
-  /* RESPONSIVE */
-  @media (max-width:768px){
-    .grid { grid-template-columns:1fr; padding:20px; }
-    .game-table { width:100%; }
-    header { flex-direction:column; align-items:flex-start; }
-    header nav { margin-top:10px; }
-  }
+  @media (max-width:768px){ .grid { grid-template-columns:1fr; padding:20px; } .game-table { width:100%; } header { flex-direction:column; align-items:flex-start; } header nav { margin-top:10px; } }
 </style>
 </head>
 <body>
@@ -71,45 +56,43 @@
 
 <section class="hero">
   <h1>Homebrew Games</h1>
-  <p>Browse community-made games for multiple consoles</p>
+  <p>Explore original community-made games for multiple consoles</p>
 </section>
 
-<!-- GRID of featured games -->
+<!-- GRID -->
 <section class="grid">
-  <div class="card" onclick="window.location.href='games/super-mario-homebrew.html'">
+  <div class="card" onclick="showDetail('super-mario')">
     <img src="https://via.placeholder.com/200x120.png?text=Super+Mario" alt="Super Mario Homebrew">
     <h3>Super Mario Homebrew</h3>
     <p>Console: NES</p>
   </div>
-  <div class="card" onclick="window.location.href='games/zelda-homebrew.html'">
-    <img src="https://via.placeholder.com/200x120.png?text=Zelda+Adventure" alt="Zelda Adventure Homebrew">
-    <h3>Zelda Adventure Homebrew</h3>
+  <div class="card" onclick="showDetail('zelda-link')">
+    <img src="https://via.placeholder.com/200x120.png?text=Zelda+Link" alt="Zelda Link Homebrew">
+    <h3>Zelda Link Adventure</h3>
     <p>Console: NES</p>
   </div>
 </section>
 
-<!-- TABLE / LIST of more games -->
+<!-- TABLE -->
 <table class="game-table">
-  <thead>
-    <tr>
-      <th>Game</th>
-      <th>Console</th>
-      <th>Creator</th>
-    </tr>
-  </thead>
+  <thead><tr><th>Game</th><th>Console</th><th>Creator</th></tr></thead>
   <tbody>
-    <tr onclick="window.location.href='games/pokemon-homebrew.html'">
-      <td>Pokemon Homebrew</td>
-      <td>GBA</td>
-      <td>JaneDoe</td>
-    </tr>
-    <tr onclick="window.location.href='games/mario-racing-homebrew.html'">
-      <td>Mario Racing Homebrew</td>
-      <td>NES</td>
-      <td>JohnSmith</td>
-    </tr>
+    <tr onclick="showDetail('super-mario')"><td>Super Mario Homebrew</td><td>NES</td><td>JaneDoe</td></tr>
+    <tr onclick="showDetail('zelda-link')"><td>Zelda Link Adventure</td><td>NES</td><td>JohnSmith</td></tr>
   </tbody>
 </table>
+
+<!-- DETAIL MODAL -->
+<div id="game-detail" class="game-detail">
+  <div class="content">
+    <span class="close-btn" onclick="closeDetail()">×</span>
+    <h1 id="detail-title"></h1>
+    <p><strong>Console:</strong> <span id="detail-console"></span></p>
+    <p><strong>Creator:</strong> <span id="detail-creator"></span></p>
+    <p><strong>Description:</strong> <span id="detail-desc"></span></p>
+    <img id="detail-img" src="" alt="Game Cover">
+  </div>
+</div>
 
 <footer>
   <div>
@@ -122,13 +105,40 @@
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </div>
-  <div>
-    <h4>Follow Us</h4>
-    <a href="#">Twitter</a>
-    <a href="#">Discord</a>
-    <a href="#">GitHub</a>
-  </div>
 </footer>
+
+<script>
+  const games = {
+    "super-mario": {
+      title: "Super Mario Homebrew",
+      console: "NES",
+      creator: "JaneDoe",
+      desc: "This is a test page for Super Mario Homebrew. Includes cover, description, and screenshots.",
+      img: "https://via.placeholder.com/400x200.png?text=Super+Mario+Homebrew"
+    },
+    "zelda-link": {
+      title: "Zelda Link Adventure",
+      console: "NES",
+      creator: "JohnSmith",
+      desc: "This is a test page for Zelda Link Adventure Homebrew. Includes cover, description, and screenshots.",
+      img: "https://via.placeholder.com/400x200.png?text=Zelda+Link+Adventure"
+    }
+  };
+
+  function showDetail(id){
+    const game = games[id];
+    document.getElementById("detail-title").innerText = game.title;
+    document.getElementById("detail-console").innerText = game.console;
+    document.getElementById("detail-creator").innerText = game.creator;
+    document.getElementById("detail-desc").innerText = game.desc;
+    document.getElementById("detail-img").src = game.img;
+    document.getElementById("game-detail").style.display = "flex";
+  }
+
+  function closeDetail(){
+    document.getElementById("game-detail").style.display = "none";
+  }
+</script>
 
 </body>
 </html>
