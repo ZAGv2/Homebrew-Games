@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Super Mario Homebrew - ZAG Archive</title>
+
+<style>
+body {
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:#f4f6f9;
+}
+
+/* HEADER */
+header {
+    background:#ffffff;
+    padding:15px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
+
+.site-title {
+    font-weight:700;
+    font-size:18px;
+    color:#1e90ff;
+}
+
+nav a {
+    margin-left:20px;
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+}
+
+/* MAIN CONTAINER */
+.container {
+    max-width:1000px;
+    margin:40px auto;
+    padding:20px;
+}
+
+/* GAME HEADER */
+.game-header {
+    display:flex;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.cover {
+    flex:1 1 300px;
+}
+
+.cover img {
+    width:100%;
+    border-radius:14px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.1);
+}
+
+.details {
+    flex:2 1 400px;
+}
+
+.details h1 {
+    margin-top:0;
+    font-size:30px;
+    color:#1e90ff;
+}
+
+.meta {
+    margin:15px 0;
+    color:#555;
+}
+
+.meta strong {
+    display:inline-block;
+    width:120px;
+}
+
+/* DESCRIPTION */
+.description {
+    margin-top:30px;
+    line-height:1.6;
+    color:#444;
+}
+
+/* SCREENSHOTS */
+.screenshots {
+    margin-top:40px;
+}
+
+.screenshot-grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:20px;
+}
+
+.screenshot-grid img {
+    width:100%;
+    border-radius:12px;
+    box-shadow:0 6px 15px rgba(0,0,0,0.08);
+}
+
+/* DOWNLOAD BUTTON */
+.download {
+    margin-top:30px;
+}
+
+.download button {
+    padding:12px 25px;
+    border:none;
+    background:#1e90ff;
+    color:white;
+    border-radius:8px;
+    font-weight:600;
+    cursor:pointer;
+}
+
+.download button:hover {
+    background:#187bcd;
+}
+
+/* MOBILE */
+@media (max-width:768px) {
+    .game-header {
+        flex-direction:column;
+    }
+}
+
+footer {
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+    background:#ffffff;
+    border-top:1px solid #eee;
+    color:#777;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="site-title">ZAG Archive</div>
+    <nav>
+        <a href="homebrew-games.html">← Back to Homebrew</a>
+    </nav>
+</header>
+
+<div class="container">
+
+    <div class="game-header">
+        <div class="cover">
+            <img src="https://via.placeholder.com/500x600.png?text=Super+Mario+Cover">
+        </div>
+
+        <div class="details">
+            <h1>Super Mario Homebrew</h1>
+
+            <div class="meta">
+                <p><strong>Console:</strong> NES</p>
+                <p><strong>Developer:</strong> JaneDoe</p>
+                <p><strong>Release Year:</strong> 2025</p>
+                <p><strong>Genre:</strong> Platformer</p>
+                <p><strong>File Size:</strong> 512 KB</p>
+            </div>
+
+            <div class="download">
+                <button disabled>Download (Coming Soon)</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="description">
+        <h2>About the Game</h2>
+        <p>
+            Super Mario Homebrew is a fan-made NES platformer built from scratch
+            using original level design and custom mechanics. This demo version
+            showcases new enemies, redesigned stages, and classic retro gameplay
+            with a modern twist.
+        </p>
+    </div>
+
+    <div class="screenshots">
+        <h2>Screenshots</h2>
+        <div class="screenshot-grid">
+            <img src="https://via.placeholder.com/400x250.png?text=Screenshot+1">
+            <img src="https://via.placeholder.com/400x250.png?text=Screenshot+2">
+            <img src="https://via.placeholder.com/400x250.png?text=Screenshot+3">
+        </div>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 ZAG Archive
+</footer>
+
+</body>
+</html>
