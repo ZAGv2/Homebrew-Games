@@ -2,150 +2,150 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Homebrew Games - ZAG Archive</title>
+
 <style>
-  body { margin:0; font-family:'Segoe UI', sans-serif; background:#f0f2f5; color:#222; }
-  header { background:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
-  .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
-  nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; }
-  nav a:hover { color:#1e90ff; }
+body {
+    margin:0;
+    font-family:'Segoe UI', sans-serif;
+    background:#f4f6f9;
+}
 
-  .hero { text-align:center; padding:50px 20px; }
-  .hero h1 { font-size:36px; color:#1e90ff; margin-bottom:10px; }
-  .hero p { font-size:18px; color:#555; }
+/* HEADER */
+header {
+    background:#ffffff;
+    padding:15px 40px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    box-shadow:0 2px 8px rgba(0,0,0,0.05);
+}
 
-  .grid, .game-table { transition: all 0.3s ease; }
+.site-title {
+    font-weight:700;
+    font-size:20px;
+    color:#1e90ff;
+    letter-spacing:1px;
+}
 
-  /* GRID */
-  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; padding:30px 50px; }
-  .card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 6px 12px rgba(0,0,0,0.08); cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; }
-  .card:hover { transform:translateY(-6px); box-shadow:0 12px 18px rgba(0,0,0,0.12); }
-  .card img { width:100%; border-radius:10px; margin-bottom:12px; }
-  .card h3 { font-size:18px; margin-bottom:6px; color:#1e90ff; }
-  .card p { font-size:14px; color:#555; }
+nav a {
+    margin-left:25px;
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+}
 
-  /* TABLE / LIST */
-  .game-table { width:90%; margin:20px auto 60px; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 12px rgba(0,0,0,0.08); }
-  .game-table th, .game-table td { padding:12px 15px; text-align:left; border-bottom:1px solid #ddd; font-size:14px; }
-  .game-table th { background:#f7f7f7; color:#1e90ff; }
-  .game-table tr:hover { background:#f0f8ff; cursor:pointer; }
+nav a:hover {
+    color:#1e90ff;
+}
 
-  /* FULL GAME DETAIL */
-  .game-detail { display:none; max-width:900px; margin:50px auto; background:#fff; padding:25px; border-radius:12px; box-shadow:0 6px 12px rgba(0,0,0,0.1); }
-  .game-detail img { max-width:100%; border-radius:10px; margin-bottom:15px; }
-  .back-btn { background:#1e90ff; color:#fff; border:none; padding:10px 20px; font-size:14px; border-radius:6px; cursor:pointer; margin-bottom:15px; }
-  .back-btn:hover { background:#0066cc; }
+/* HERO */
+.hero {
+    text-align:center;
+    padding:50px 20px;
+}
 
-  footer { background:#fff; padding:30px 50px; display:flex; justify-content:space-between; flex-wrap:wrap; border-top:1px solid #ddd; color:#555; }
-  footer div { margin-bottom:15px; }
-  footer h4 { margin-bottom:8px; font-size:16px; color:#333; }
-  footer a { text-decoration:none; color:#1e90ff; font-size:14px; display:block; margin-bottom:4px; }
-  footer a:hover { text-decoration:underline; }
+.hero h1 {
+    font-size:34px;
+    color:#1e90ff;
+    margin-bottom:10px;
+}
 
-  @media (max-width:768px){ .grid { grid-template-columns:1fr; padding:20px; } .game-table { width:100%; } header { flex-direction:column; align-items:flex-start; } header nav { margin-top:10px; } }
+.hero p {
+    color:#666;
+}
+
+/* GRID */
+.grid {
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
+    gap:25px;
+    padding:40px;
+}
+
+.card {
+    background:#ffffff;
+    border-radius:14px;
+    padding:18px;
+    text-align:center;
+    text-decoration:none;
+    color:#000;
+    box-shadow:0 8px 20px rgba(0,0,0,0.06);
+    transition:0.3s ease;
+}
+
+.card:hover {
+    transform:translateY(-6px);
+}
+
+.card img {
+    width:100%;
+    border-radius:10px;
+    margin-bottom:12px;
+}
+
+.card h3 {
+    margin:10px 0 5px;
+}
+
+.card p {
+    font-size:14px;
+    color:#666;
+}
+
+/* FOOTER */
+footer {
+    text-align:center;
+    padding:20px;
+    background:#ffffff;
+    border-top:1px solid #eee;
+    color:#777;
+}
 </style>
 </head>
+
 <body>
 
 <header>
-  <div class="site-title">ZAG <span>Archive</span></div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+    <div class="site-title">ZAG Archive</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="romhack-patches.html">ROM Hacks</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 </header>
 
 <section class="hero">
-  <h1>Homebrew Games</h1>
-  <p>Explore original community-made games for multiple consoles</p>
+    <h1>Homebrew Games</h1>
+    <p>Explore independent and community-made games.</p>
 </section>
 
-<!-- GRID -->
-<section id="grid-section" class="grid">
-  <div class="card" onclick="openGame('super-mario')">
-    <img src="https://via.placeholder.com/200x120.png?text=Super+Mario" alt="Super Mario Homebrew">
-    <h3>Super Mario Homebrew</h3>
-    <p>Console: NES</p>
-  </div>
-  <div class="card" onclick="openGame('zelda-link')">
-    <img src="https://via.placeholder.com/200x120.png?text=Zelda+Link" alt="Zelda Link Homebrew">
-    <h3>Zelda Link Adventure</h3>
-    <p>Console: NES</p>
-  </div>
-</section>
+<section class="grid">
 
-<!-- TABLE -->
-<table class="game-table" id="table-section">
-  <thead><tr><th>Game</th><th>Console</th><th>Creator</th></tr></thead>
-  <tbody>
-    <tr onclick="openGame('super-mario')"><td>Super Mario Homebrew</td><td>NES</td><td>JaneDoe</td></tr>
-    <tr onclick="openGame('zelda-link')"><td>Zelda Link Adventure</td><td>NES</td><td>JohnSmith</td></tr>
-  </tbody>
-</table>
+    <a href="super-mario-homebrew.html" class="card">
+        <img src="https://via.placeholder.com/300x160.png?text=Super+Mario">
+        <h3>Super Mario Homebrew</h3>
+        <p>Console: NES</p>
+    </a>
 
-<!-- FULL GAME DETAIL -->
-<section id="game-detail" class="game-detail">
-  <button class="back-btn" onclick="backToGrid()">← Back to Games</button>
-  <h1 id="detail-title"></h1>
-  <p><strong>Console:</strong> <span id="detail-console"></span></p>
-  <p><strong>Creator:</strong> <span id="detail-creator"></span></p>
-  <p><strong>Description:</strong> <span id="detail-desc"></span></p>
-  <img id="detail-img" src="" alt="Game Cover">
+    <a href="zelda-link-adventure.html" class="card">
+        <img src="https://via.placeholder.com/300x160.png?text=Zelda+Adventure">
+        <h3>Zelda Link Adventure</h3>
+        <p>Console: NES</p>
+    </a>
+
+    <a href="space-runner.html" class="card">
+        <img src="https://via.placeholder.com/300x160.png?text=Space+Runner">
+        <h3>Space Runner</h3>
+        <p>Console: GameBoy</p>
+    </a>
+
 </section>
 
 <footer>
-  <div>
-    <h4>About ZAG Archive</h4>
-    <p>A hub for homebrew games, ROM hacks, and community resources.</p>
-  </div>
-  <div>
-    <h4>Quick Links</h4>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="contact.html">Contact</a>
-  </div>
+    © 2026 ZAG Archive
 </footer>
-
-<script>
-  const games = {
-    "super-mario": {
-      title: "Super Mario Homebrew",
-      console: "NES",
-      creator: "JaneDoe",
-      desc: "This is a full-page view for Super Mario Homebrew. Shows cover, description, and screenshots.",
-      img: "https://via.placeholder.com/400x200.png?text=Super+Mario+Homebrew"
-    },
-    "zelda-link": {
-      title: "Zelda Link Adventure",
-      console: "NES",
-      creator: "JohnSmith",
-      desc: "Full-page view for Zelda Link Adventure Homebrew. Includes cover, description, and screenshots.",
-      img: "https://via.placeholder.com/400x200.png?text=Zelda+Link+Adventure"
-    }
-  };
-
-  function openGame(id){
-    const game = games[id];
-    document.getElementById("detail-title").innerText = game.title;
-    document.getElementById("detail-console").innerText = game.console;
-    document.getElementById("detail-creator").innerText = game.creator;
-    document.getElementById("detail-desc").innerText = game.desc;
-    document.getElementById("detail-img").src = game.img;
-
-    // Hide grid/table, show detail
-    document.getElementById("grid-section").style.display = "none";
-    document.getElementById("table-section").style.display = "none";
-    document.getElementById("game-detail").style.display = "block";
-    window.scrollTo(0,0);
-  }
-
-  function backToGrid(){
-    document.getElementById("game-detail").style.display = "none";
-    document.getElementById("grid-section").style.display = "grid";
-    document.getElementById("table-section").style.display = "table";
-  }
-</script>
 
 </body>
 </html>
