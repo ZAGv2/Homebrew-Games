@@ -15,7 +15,7 @@ body {
 /* HEADER */
 header {
     background:#ffffff;
-    padding:15px 40px;
+    padding:15px 20px;
     display:flex;
     justify-content:space-between;
     align-items:center;
@@ -24,77 +24,97 @@ header {
 
 .site-title {
     font-weight:700;
-    font-size:20px;
+    font-size:18px;
     color:#1e90ff;
-    letter-spacing:1px;
 }
 
 nav a {
-    margin-left:25px;
+    margin-left:20px;
     text-decoration:none;
     color:#333;
     font-weight:600;
 }
 
-nav a:hover {
-    color:#1e90ff;
-}
-
 /* HERO */
 .hero {
     text-align:center;
-    padding:50px 20px;
+    padding:40px 20px;
 }
 
 .hero h1 {
-    font-size:34px;
+    font-size:28px;
     color:#1e90ff;
-    margin-bottom:10px;
-}
-
-.hero p {
-    color:#666;
 }
 
 /* GRID */
 .grid {
     display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(220px, 1fr));
-    gap:25px;
-    padding:40px;
+    grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
+    gap:20px;
+    padding:20px;
 }
 
 .card {
     background:#ffffff;
     border-radius:14px;
-    padding:18px;
+    padding:15px;
     text-align:center;
-    text-decoration:none;
-    color:#000;
-    box-shadow:0 8px 20px rgba(0,0,0,0.06);
-    transition:0.3s ease;
-}
-
-.card:hover {
-    transform:translateY(-6px);
+    box-shadow:0 6px 15px rgba(0,0,0,0.05);
+    cursor:default;
 }
 
 .card img {
     width:100%;
     border-radius:10px;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .card h3 {
-    margin:10px 0 5px;
+    font-size:16px;
+    margin:8px 0 4px;
 }
 
 .card p {
-    font-size:14px;
+    font-size:13px;
     color:#666;
 }
 
-/* FOOTER */
+/* TABLE */
+.table-container {
+    padding:20px;
+}
+
+table {
+    width:100%;
+    border-collapse:collapse;
+    background:#ffffff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 6px 15px rgba(0,0,0,0.05);
+    font-size:14px;
+}
+
+th, td {
+    padding:12px;
+    text-align:left;
+}
+
+th {
+    background:#1e90ff;
+    color:white;
+}
+
+tr:nth-child(even) {
+    background:#f2f2f2;
+}
+
+/* Make table scrollable on small screens */
+@media (max-width:600px) {
+    .table-container {
+        overflow-x:auto;
+    }
+}
+
 footer {
     text-align:center;
     padding:20px;
@@ -111,37 +131,67 @@ footer {
     <div class="site-title">ZAG Archive</div>
     <nav>
         <a href="index.html">Home</a>
-        <a href="romhack-patches.html">ROM Hacks</a>
-        <a href="contact.html">Contact</a>
+        <a href="#">ROM Hacks</a>
+        <a href="#">Contact</a>
     </nav>
 </header>
 
 <section class="hero">
     <h1>Homebrew Games</h1>
-    <p>Explore independent and community-made games.</p>
 </section>
 
+<!-- GRID VIEW -->
 <section class="grid">
 
-    <a href="super-mario-homebrew.html" class="card">
+    <div class="card">
         <img src="https://via.placeholder.com/300x160.png?text=Super+Mario">
         <h3>Super Mario Homebrew</h3>
         <p>Console: NES</p>
-    </a>
+    </div>
 
-    <a href="zelda-link-adventure.html" class="card">
+    <div class="card">
         <img src="https://via.placeholder.com/300x160.png?text=Zelda+Adventure">
         <h3>Zelda Link Adventure</h3>
         <p>Console: NES</p>
-    </a>
+    </div>
 
-    <a href="space-runner.html" class="card">
+    <div class="card">
         <img src="https://via.placeholder.com/300x160.png?text=Space+Runner">
         <h3>Space Runner</h3>
         <p>Console: GameBoy</p>
-    </a>
+    </div>
 
 </section>
+
+<!-- TABLE VIEW -->
+<div class="table-container">
+<table>
+    <tr>
+        <th>Title</th>
+        <th>Console</th>
+        <th>Creator</th>
+        <th>Year</th>
+    </tr>
+    <tr>
+        <td>Super Mario Homebrew</td>
+        <td>NES</td>
+        <td>JaneDoe</td>
+        <td>2025</td>
+    </tr>
+    <tr>
+        <td>Zelda Link Adventure</td>
+        <td>NES</td>
+        <td>RetroDev</td>
+        <td>2024</td>
+    </tr>
+    <tr>
+        <td>Space Runner</td>
+        <td>GameBoy</td>
+        <td>IndieMaker</td>
+        <td>2026</td>
+    </tr>
+</table>
+</div>
 
 <footer>
     © 2026 ZAG Archive
