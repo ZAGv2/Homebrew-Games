@@ -6,11 +6,28 @@
 <style>
   body { margin:0; font-family:'Segoe UI', sans-serif; background:#f0f2f5; color:#222; }
 
-  /* HEADER */
-  header { background:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; flex-wrap:wrap; }
+  /* STICKY SLIDE-DOWN HEADER */
+  header.sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background:#fff;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:15px 40px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.1);
+    flex-wrap:wrap;
+  }
   .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
-  nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; }
-  nav a:hover { color:#1e90ff; }
+  nav.section-nav a {
+    margin-left:20px;
+    text-decoration:none;
+    color:#333;
+    font-weight:600;
+    transition:color 0.2s;
+  }
+  nav.section-nav a:hover { color:#1e90ff; }
 
   /* HERO */
   .hero { text-align:center; padding:50px 20px; }
@@ -43,30 +60,34 @@
   @media (max-width:768px){
     .grid { grid-template-columns:1fr; padding:20px; }
     .game-table { width:100%; font-size:13px; display:block; overflow-x:auto; }
-    header { flex-direction:column; align-items:flex-start; }
-    nav { margin-top:10px; }
-    nav a { margin-left:0; margin-right:15px; margin-bottom:8px; display:inline-block; }
+    header.sticky-header { flex-direction:column; align-items:flex-start; }
+    nav.section-nav { margin-top:10px; }
+    nav.section-nav a { margin-left:0; margin-right:15px; margin-bottom:8px; display:inline-block; }
   }
 </style>
 </head>
 <body>
 
-<header>
+<!-- STICKY HEADER -->
+<header class="sticky-header">
   <div class="site-title">ZAG <span>Archive</span></div>
-  <nav>
+  <nav class="section-nav">
     <a href="https://zagv2.github.io/ZAGArchive-/index.html">Home</a>
+    <a href="#homebrew-section">Homebrew Games</a>
+    <a href="romhack.html">ROM Hacks</a>
     <a href="about.html">About</a>
     <a href="contact.html">Contact</a>
   </nav>
 </header>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Homebrew Games</h1>
   <p>Explore original community-made games for multiple consoles</p>
 </section>
 
 <!-- GRID of featured games -->
-<section class="grid">
+<section class="grid" id="homebrew-section">
   <div class="card" onclick="window.location.href='game-pages/dummy-game.html'">
     <img src="assets/IMG_0085.png" alt="Dummy Game Cover">
     <h3>Dummy Game</h3>
@@ -96,6 +117,7 @@
   </tbody>
 </table>
 
+<!-- FOOTER -->
 <footer>
   <div>
     <h4>About ZAG Archive</h4>
