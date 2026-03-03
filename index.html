@@ -7,7 +7,7 @@
 <style>
 body { margin:0; font-family:'Segoe UI', sans-serif; background:#f0f2f5; color:#222; }
 
-/* Header */
+/* ================= HEADER ================= */
 header { background:#fff; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; flex-wrap:wrap; }
 .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
 nav { display:flex; align-items:center; flex-wrap:wrap; }
@@ -20,12 +20,12 @@ nav a:hover { color:#1e90ff; }
 .dropdown-content a:hover { background:#f0f8ff; color:#1e90ff; }
 .dropdown:hover .dropdown-content { display:block; }
 
-/* Search bar */
-.search-bar { max-width:500px; margin:30px auto; display:flex; }
+/* ================= SEARCH ================= */
+.search-bar { max-width:350px; margin:30px auto; display:flex; }
 .search-bar input { flex:1; padding:10px 15px; border-radius:8px 0 0 8px; border:1px solid #ccc; font-size:16px; }
 .search-bar button { padding:10px 20px; border:none; border-radius:0 8px 8px 0; background:#1e90ff; color:#fff; cursor:pointer; }
 
-/* Grid for trending games */
+/* ================= GRID / TRENDING ================= */
 .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; padding:20px 50px; }
 .card { background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 6px 12px rgba(0,0,0,0.08); cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; }
 .card:hover { transform:translateY(-6px); box-shadow:0 12px 18px rgba(0,0,0,0.12); }
@@ -33,28 +33,28 @@ nav a:hover { color:#1e90ff; }
 .card h3 { font-size:18px; margin-bottom:6px; color:#1e90ff; }
 .card p { font-size:14px; color:#555; }
 
-/* Table for all games */
+/* ================= TABLE ================= */
 .game-table { width:90%; margin:20px auto 50px; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 12px rgba(0,0,0,0.08); }
 .game-table th, .game-table td { padding:12px 15px; text-align:left; border-bottom:1px solid #ddd; font-size:14px; }
 .game-table th { background:#f7f7f7; color:#1e90ff; }
 .game-table tr:hover { background:#f0f8ff; cursor:pointer; }
 
-/* Pagination */
+/* ================= PAGINATION ================= */
 .pagination { display:flex; justify-content:center; gap:10px; margin-bottom:50px; }
 .pagination button { padding:8px 12px; border:none; background:#1e90ff; color:#fff; border-radius:6px; cursor:pointer; }
 .pagination button.disabled { background:#ccc; cursor:not-allowed; }
 
-/* Footer */
+/* ================= FOOTER ================= */
 footer { background:#fff; padding:25px; text-align:center; border-top:1px solid #ddd; color:#555; font-size:14px; }
 
-/* Responsive */
+/* ================= MOBILE RESPONSIVE ================= */
 @media (max-width:768px){
   header { flex-direction:column; align-items:flex-start; }
   nav { margin-top:10px; width:100%; justify-content:flex-start; }
   nav a, .dropbtn { margin-left:0; margin-right:15px; margin-top:8px; }
   .grid { grid-template-columns:1fr; padding:20px; }
-  .search-bar { flex-direction:column; }
-  .search-bar input, .search-bar button { width:100%; margin-bottom:10px; }
+  .search-bar { max-width:90%; flex-direction:column; gap:10px; }
+  .search-bar input, .search-bar button { width:100%; border-radius:8px; }
   .game-table { width:100%; }
 }
 </style>
