@@ -1,14 +1,13 @@
 # ZAG Archive – Homebrew Games System
 
+![Workflow Status](https://img.shields.io/github/actions/workflow/status/ZAGv2/Homebrew-Games/auto.yml?branch=main?label=Automation%20Workflow)  
+![Releases](https://img.shields.io/github/v/release/ZAGv2/Homebrew-Games?label=Latest%20Release&sort=semver)
+
 ![Homebrew Workflow](./assets/homebrew_workflow.png)  
 *Figure 1: Homebrew Games automation workflow*
 
 ![Game Submission Structure](./assets/game_structure.png)  
 *Figure 2: How to submit a game (zip files and folders)*
-
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/ZAGv2/Homebrew-Games/Auto-generate%20Pages)
-![GitHub Release](https://img.shields.io/github/v/release/ZAGv2/Homebrew-Games)
-
 ---
 
 ## Overview
