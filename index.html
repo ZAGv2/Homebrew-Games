@@ -27,19 +27,8 @@ header .nav-container {
   padding:15px 40px;
   flex-wrap:wrap;
 }
-header .site-title {
-  font-weight:700;
-  font-size:20px;
-  color:#1e90ff;
-  text-transform:uppercase;
-}
-header nav a {
-  margin-left:20px;
-  text-decoration:none;
-  color:#333;
-  font-weight:600;
-  transition:color 0.2s;
-}
+header .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
+header nav a { margin-left:20px; text-decoration:none; color:#333; font-weight:600; transition:color 0.2s; }
 header nav a:hover { color:#1e90ff; }
 
 /* DROPDOWN */
@@ -55,12 +44,7 @@ header nav a:hover { color:#1e90ff; }
   border-radius:8px;
   z-index:200;
 }
-.dropdown-content a {
-  display:block;
-  padding:10px 15px;
-  text-decoration:none;
-  color:#333;
-}
+.dropdown-content a { display:block; padding:10px 15px; text-decoration:none; color:#333; }
 .dropdown-content a:hover { background:#f0f8ff; color:#1e90ff; }
 
 /* HERO */
@@ -146,8 +130,6 @@ footer a:hover { text-decoration:underline; }
     <div class="site-title">ZAG <span>Archive</span></div>
     <nav>
       <a href="https://zagv2.github.io/ZAGArchive-/index.html">Home</a>
-
-      <!-- Sections dropdown -->
       <div class="dropdown">
         <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown()">Sections ▼</a>
         <div id="dropdown-content" class="dropdown-content">
@@ -155,7 +137,6 @@ footer a:hover { text-decoration:underline; }
           <a href="#romhack-section">ROM Hacks & Patches</a>
         </div>
       </div>
-
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -168,16 +149,12 @@ footer a:hover { text-decoration:underline; }
   <p>Explore original community-made games for multiple consoles</p>
 </section>
 
-<!-- GRID SECTION -->
+<!-- GRID SECTION (Empty, system will populate) -->
 <section class="grid" id="homebrew-section">
-  <div class="card" onclick="window.location.href='game-pages/dummy-game.html'">
-    <img src="assets/IMG_0085.png" alt="Dummy Game Cover">
-    <h3>Dummy Game</h3>
-    <p>Console: NES</p>
-  </div>
+  <!-- Auto-generated cards go here -->
 </section>
 
-<!-- TABLE SECTION -->
+<!-- TABLE SECTION (Empty, system will populate) -->
 <table class="game-table">
   <thead>
     <tr>
@@ -189,13 +166,7 @@ footer a:hover { text-decoration:underline; }
     </tr>
   </thead>
   <tbody>
-    <tr onclick="window.location.href='game-pages/dummy-game.html'">
-      <td><img src="assets/IMG_0085.png" alt="Dummy Game Cover"></td>
-      <td>Dummy Game</td>
-      <td>NES</td>
-      <td>Dummy Dev</td>
-      <td>1985</td>
-    </tr>
+    <!-- Auto-generated rows go here -->
   </tbody>
 </table>
 
