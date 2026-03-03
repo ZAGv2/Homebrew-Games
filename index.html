@@ -11,14 +11,14 @@ body {
   color:#222;
 }
 
-/* HEADER / SLIDE-DOWN NAVIGATION */
+/* HEADER / STICKY NAV */
 header {
   position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 100;
-  background: #fff;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  width:100%;
+  top:0;
+  z-index:100;
+  background:#fff;
+  box-shadow:0 2px 6px rgba(0,0,0,0.1);
 }
 header .nav-container {
   display:flex;
@@ -38,26 +38,38 @@ header nav a {
   text-decoration:none;
   color:#333;
   font-weight:600;
-  transition: color 0.2s;
+  transition:color 0.2s;
 }
-header nav a:hover {
-  color:#1e90ff;
+header nav a:hover { color:#1e90ff; }
+
+/* DROPDOWN */
+.dropdown { position: relative; display:inline-block; }
+.dropbtn { cursor:pointer; text-decoration:none; color:#333; font-weight:600; }
+.dropbtn:hover { color:#1e90ff; }
+.dropdown-content {
+  display:none;
+  position:absolute;
+  background:#fff;
+  min-width:150px;
+  box-shadow:0 6px 12px rgba(0,0,0,0.1);
+  border-radius:8px;
+  z-index:200;
 }
+.dropdown-content a {
+  display:block;
+  padding:10px 15px;
+  text-decoration:none;
+  color:#333;
+}
+.dropdown-content a:hover { background:#f0f8ff; color:#1e90ff; }
 
 /* HERO */
 .hero {
   text-align:center;
-  padding:120px 20px 50px; /* padding-top increased to avoid fixed header overlap */
+  padding:120px 20px 50px; /* top padding to avoid header overlap */
 }
-.hero h1 {
-  font-size:36px;
-  color:#1e90ff;
-  margin-bottom:10px;
-}
-.hero p {
-  font-size:18px;
-  color:#555;
-}
+.hero h1 { font-size:36px; color:#1e90ff; margin-bottom:10px; }
+.hero p { font-size:18px; color:#555; }
 
 /* GRID */
 .grid {
@@ -75,26 +87,12 @@ header nav a:hover {
   cursor:pointer;
   transition: transform 0.3s, box-shadow 0.3s;
 }
-.card:hover {
-  transform:translateY(-6px);
-  box-shadow:0 12px 18px rgba(0,0,0,0.12);
-}
-.card img {
-  width:100%;
-  border-radius:10px;
-  margin-bottom:12px;
-}
-.card h3 {
-  font-size:18px;
-  margin-bottom:6px;
-  color:#1e90ff;
-}
-.card p {
-  font-size:14px;
-  color:#555;
-}
+.card:hover { transform:translateY(-6px); box-shadow:0 12px 18px rgba(0,0,0,0.12); }
+.card img { width:100%; border-radius:10px; margin-bottom:12px; }
+.card h3 { font-size:18px; margin-bottom:6px; color:#1e90ff; }
+.card p { font-size:14px; color:#555; }
 
-/* TABLE / LIST */
+/* TABLE */
 .game-table {
   width:90%;
   margin:20px auto 60px;
@@ -104,25 +102,15 @@ header nav a:hover {
   overflow:hidden;
   box-shadow:0 6px 12px rgba(0,0,0,0.08);
 }
-.game-table th,
-.game-table td {
+.game-table th, .game-table td {
   padding:12px 15px;
   text-align:left;
   border-bottom:1px solid #ddd;
   font-size:14px;
 }
-.game-table th {
-  background:#f7f7f7;
-  color:#1e90ff;
-}
-.game-table tr:hover {
-  background:#f0f8ff;
-  cursor:pointer;
-}
-.game-table img {
-  width:50px;
-  border-radius:5px;
-}
+.game-table th { background:#f7f7f7; color:#1e90ff; }
+.game-table tr:hover { background:#f0f8ff; cursor:pointer; }
+.game-table img { width:50px; border-radius:5px; }
 
 /* FOOTER */
 footer {
@@ -134,21 +122,9 @@ footer {
   border-top:1px solid #ddd;
   color:#555;
 }
-footer div {
-  margin-bottom:15px;
-}
-footer h4 {
-  margin-bottom:8px;
-  font-size:16px;
-  color:#333;
-}
-footer a {
-  text-decoration:none;
-  color:#1e90ff;
-  font-size:14px;
-  display:block;
-  margin-bottom:4px;
-}
+footer div { margin-bottom:15px; }
+footer h4 { margin-bottom:8px; font-size:16px; color:#333; }
+footer a { text-decoration:none; color:#1e90ff; font-size:14px; display:block; margin-bottom:4px; }
 footer a:hover { text-decoration:underline; }
 
 /* RESPONSIVE */
@@ -158,6 +134,7 @@ footer a:hover { text-decoration:underline; }
   header .nav-container { flex-direction:column; align-items:flex-start; }
   header nav { margin-top:10px; }
   header nav a { margin-left:0; margin-right:15px; margin-bottom:8px; display:inline-block; }
+  .dropdown-content { position:relative; }
 }
 </style>
 </head>
@@ -169,8 +146,16 @@ footer a:hover { text-decoration:underline; }
     <div class="site-title">ZAG <span>Archive</span></div>
     <nav>
       <a href="https://zagv2.github.io/ZAGArchive-/index.html">Home</a>
-      <a href="#homebrew-section">Homebrew Games</a>
-      <a href="romhack.html">ROM Hacks</a>
+
+      <!-- Games dropdown -->
+      <div class="dropdown">
+        <a href="javascript:void(0)" class="dropbtn" onclick="toggleDropdown()">Games ▼</a>
+        <div id="dropdown-content" class="dropdown-content">
+          <a href="#homebrew-section">Homebrew Games</a>
+          <a href="#romhack-section">ROM Hacks</a>
+        </div>
+      </div>
+
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
     </nav>
@@ -183,7 +168,7 @@ footer a:hover { text-decoration:underline; }
   <p>Explore original community-made games for multiple consoles</p>
 </section>
 
-<!-- GRID of featured games -->
+<!-- GRID SECTION -->
 <section class="grid" id="homebrew-section">
   <div class="card" onclick="window.location.href='game-pages/dummy-game.html'">
     <img src="assets/IMG_0085.png" alt="Dummy Game Cover">
@@ -192,7 +177,7 @@ footer a:hover { text-decoration:underline; }
   </div>
 </section>
 
-<!-- TABLE / LIST -->
+<!-- TABLE SECTION -->
 <table class="game-table">
   <thead>
     <tr>
@@ -214,6 +199,9 @@ footer a:hover { text-decoration:underline; }
   </tbody>
 </table>
 
+<!-- ROM Hacks section placeholder -->
+<section id="romhack-section"></section>
+
 <!-- FOOTER -->
 <footer>
   <div>
@@ -233,6 +221,20 @@ footer a:hover { text-decoration:underline; }
     <a href="#">GitHub</a>
   </div>
 </footer>
+
+<script>
+function toggleDropdown() {
+  const dropdown = document.getElementById("dropdown-content");
+  dropdown.style.display = (dropdown.style.display === "block") ? "none" : "block";
+}
+// Hide dropdown if click outside
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    const dropdown = document.getElementById("dropdown-content");
+    if (dropdown.style.display === "block") dropdown.style.display = "none";
+  }
+}
+</script>
 
 </body>
 </html>
