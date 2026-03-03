@@ -21,9 +21,30 @@ nav a:hover { color:#1e90ff; }
 .dropdown:hover .dropdown-content { display:block; }
 
 /* ================= SEARCH ================= */
-.search-bar { max-width:350px; margin:30px auto; display:flex; }
-.search-bar input { flex:1; padding:10px 15px; border-radius:8px 0 0 8px; border:1px solid #ccc; font-size:16px; }
-.search-bar button { padding:10px 20px; border:none; border-radius:0 8px 8px 0; background:#1e90ff; color:#fff; cursor:pointer; }
+.search-bar {
+  width: 100%;
+  max-width: 350px;
+  margin: 30px auto;
+  display: flex;
+  box-sizing: border-box;
+}
+.search-bar input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 8px 0 0 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.search-bar button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 0 8px 8px 0;
+  background: #1e90ff;
+  color: #fff;
+  cursor: pointer;
+  box-sizing: border-box;
+}
 
 /* ================= GRID / TRENDING ================= */
 .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; padding:20px 50px; }
@@ -53,7 +74,7 @@ footer { background:#fff; padding:25px; text-align:center; border-top:1px solid 
   nav { margin-top:10px; width:100%; justify-content:flex-start; }
   nav a, .dropbtn { margin-left:0; margin-right:15px; margin-top:8px; }
   .grid { grid-template-columns:1fr; padding:20px; }
-  .search-bar { max-width:90%; flex-direction:column; gap:10px; }
+  .search-bar { width: calc(100% - 20px); flex-direction: column; gap:6px; margin:20px 10px; }
   .search-bar input, .search-bar button { width:100%; border-radius:8px; }
   .game-table { width:100%; }
 }
