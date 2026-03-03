@@ -19,9 +19,13 @@ Both must have matching prefixes to link correctly.
 **Explanation:** The automation system reads this metadata to generate the game pages automatically. Example:
 
 Title: Super Mario
+
 Console: NES
+
 Creator: Nintendo
+
 Year: 1985
+
 Description: This is a classic platformer where Mario saves Princess Peach.
 
 - Each key is **case-sensitive**  
