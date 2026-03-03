@@ -1,56 +1,100 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Homebrew Games</title>
-    <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<title>Homebrew Games - ZAG Archive</title>
+<style>
+  body { margin:0; font-family:'Segoe UI', sans-serif; background:#f0f2f5; color:#222; }
+  header { background:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
+  .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
+  nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; }
+  nav a:hover { color:#1e90ff; }
+
+  /* HERO */
+  .hero { text-align:center; padding:50px 20px; }
+  .hero h1 { font-size:36px; color:#1e90ff; margin-bottom:10px; }
+  .hero p { font-size:18px; color:#555; }
+
+  /* GRID */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; padding:30px 50px; }
+  .card { background:#fff; padding:20px; border-radius:12px; text-align:center; box-shadow:0 6px 12px rgba(0,0,0,0.08); cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; }
+  .card:hover { transform:translateY(-6px); box-shadow:0 12px 18px rgba(0,0,0,0.12); }
+  .card img { width:100%; border-radius:10px; margin-bottom:12px; }
+  .card h3 { font-size:18px; margin-bottom:6px; color:#1e90ff; }
+  .card p { font-size:14px; color:#555; }
+
+  /* TABLE / LIST */
+  .game-table { width:90%; margin:20px auto 60px; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 12px rgba(0,0,0,0.08); }
+  .game-table th, .game-table td { padding:12px 15px; text-align:left; border-bottom:1px solid #ddd; font-size:14px; }
+  .game-table th { background:#f7f7f7; color:#1e90ff; }
+  .game-table tr:hover { background:#f0f8ff; cursor:pointer; }
+
+  /* FOOTER */
+  footer { background:#fff; padding:30px 50px; display:flex; justify-content:space-between; flex-wrap:wrap; border-top:1px solid #ddd; color:#555; }
+  footer div { margin-bottom:15px; }
+  footer h4 { margin-bottom:8px; font-size:16px; color:#333; }
+  footer a { text-decoration:none; color:#1e90ff; font-size:14px; display:block; margin-bottom:4px; }
+  footer a:hover { text-decoration:underline; }
+
+  /* RESPONSIVE */
+  @media (max-width:768px){ .grid { grid-template-columns:1fr; padding:20px; } .game-table { width:100%; } header { flex-direction:column; align-items:flex-start; } header nav { margin-top:10px; } }
+</style>
 </head>
 <body>
-    <header>
-        <h1>Homebrew Games</h1>
-        <input type="text" id="searchBar" placeholder="Search by title or console">
-    </header>
 
-    <!-- Grid of top 3 trending -->
-    <section id="trendingGrid">
-        <h2>Trending Games</h2>
-        <div class="grid-container">
-            <!-- Dummy Game -->
-            <div class="grid-card">
-                <a href="game-pages/dummy-game.html">
-                    <img src="assets/dummy-cover.jpg" alt="Dummy Game Cover">
-                    <div class="grid-info">
-                        <h3>Dummy Game</h3>
-                        <p>Console: NES</p>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
+<header>
+  <div class="site-title">ZAG <span>Archive</span></div>
+  <nav>
+    <a href="https://zagv2.github.io/ZAGArchive-/index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-    <!-- Table of all games -->
-    <section id="allGamesTable">
-        <h2>All Games</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Console</th>
-                    <th>Developer</th>
-                    <th>Year</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><a href="game-pages/dummy-game.html">Dummy Game</a></td>
-                    <td>NES</td>
-                    <td>Dummy Dev</td>
-                    <td>1985</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
+<section class="hero">
+  <h1>Homebrew Games</h1>
+  <p>Explore original community-made games for multiple consoles</p>
+</section>
 
-    <script src="assets/scripts.js"></script>
+<!-- GRID of featured games -->
+<section class="grid">
+  <div class="card" onclick="window.location.href='game-pages/dummy-game.html'">
+    <img src="assets/IMG_0085.png" alt="Dummy Game Cover">
+    <h3>Dummy Game</h3>
+    <p>Console: NES</p>
+  </div>
+</section>
+
+<!-- TABLE / LIST of more games -->
+<table class="game-table">
+  <thead>
+    <tr><th>Game</th><th>Console</th><th>Creator</th></tr>
+  </thead>
+  <tbody>
+    <tr onclick="window.location.href='game-pages/dummy-game.html'">
+      <td>Dummy Game</td><td>NES</td><td>Dummy Dev</td>
+    </tr>
+  </tbody>
+</table>
+
+<footer>
+  <div>
+    <h4>About ZAG Archive</h4>
+    <p>A hub for homebrew games, ROM hacks, and community resources.</p>
+  </div>
+  <div>
+    <h4>Quick Links</h4>
+    <a href="https://zagv2.github.io/ZAGArchive-/index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <div>
+    <h4>Follow Us</h4>
+    <a href="#">Twitter</a>
+    <a href="#">Discord</a>
+    <a href="#">GitHub</a>
+  </div>
+</footer>
+
 </body>
 </html>
