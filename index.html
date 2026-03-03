@@ -1,216 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Homebrew Games - ZAG Archive</title>
-<style>
-body {
-    margin:0;
-    font-family:'Segoe UI', sans-serif;
-    background:#f4f6f9;
-}
-
-/* HEADER */
-header {
-    background:#ffffff;
-    padding:15px 20px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    box-shadow:0 2px 8px rgba(0,0,0,0.05);
-}
-
-.site-title {
-    font-weight:700;
-    font-size:18px;
-    color:#1e90ff;
-}
-
-nav a {
-    margin-left:20px;
-    text-decoration:none;
-    color:#333;
-    font-weight:600;
-}
-
-/* HERO */
-.hero {
-    text-align:center;
-    padding:40px 20px;
-}
-
-.hero h1 {
-    font-size:28px;
-    color:#1e90ff;
-    margin-bottom:15px;
-}
-
-/* SEARCH BAR */
-#searchBar {
-    width:100%;
-    max-width:400px;
-    padding:10px 15px;
-    border-radius:8px;
-    border:1px solid #ccc;
-    font-size:14px;
-    margin:0 auto 30px;
-    display:block;
-}
-
-/* GRID */
-.grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(180px, 1fr));
-    gap:20px;
-    padding:0 20px 20px 20px;
-}
-
-.card {
-    background:#ffffff;
-    border-radius:14px;
-    padding:15px;
-    text-align:center;
-    box-shadow:0 6px 15px rgba(0,0,0,0.05);
-    text-decoration:none;
-    color:inherit;
-    transition:0.2s ease;
-}
-
-.card:hover {
-    transform:translateY(-5px);
-}
-
-.card img {
-    width:100%;
-    border-radius:10px;
-    margin-bottom:10px;
-}
-
-.card h3 {
-    font-size:16px;
-    margin:8px 0 4px;
-}
-
-.card p {
-    font-size:13px;
-    color:#666;
-}
-
-/* TABLE */
-.table-container {
-    padding:20px;
-}
-
-table {
-    width:100%;
-    border-collapse:collapse;
-    background:#ffffff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 6px 15px rgba(0,0,0,0.05);
-    font-size:14px;
-}
-
-th, td {
-    padding:12px;
-    text-align:left;
-}
-
-th {
-    background:#1e90ff;
-    color:white;
-}
-
-tr:nth-child(even) {
-    background:#f2f2f2;
-}
-
-/* Make table scrollable on small screens */
-@media (max-width:600px) {
-    .table-container {
-        overflow-x:auto;
-    }
-}
-
-footer {
-    text-align:center;
-    padding:20px;
-    background:#ffffff;
-    border-top:1px solid #eee;
-    color:#777;
-}
-</style>
+    <meta charset="UTF-8">
+    <title>Homebrew Games</title>
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    <header>
+        <h1>Homebrew Games</h1>
+        <input type="text" id="searchBar" placeholder="Search by title or console">
+    </header>
 
-<header>
-    <div class="site-title">ZAG Archive</div>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="#">ROM Hacks</a>
-        <a href="#">Contact</a>
-    </nav>
-</header>
+    <!-- Grid of top 3 trending -->
+    <section id="trendingGrid">
+        <h2>Trending Games</h2>
+        <div class="grid-container">
+            <!-- Dummy Game -->
+            <div class="grid-card">
+                <a href="game-pages/dummy-game.html">
+                    <img src="assets/dummy-cover.jpg" alt="Dummy Game Cover">
+                    <div class="grid-info">
+                        <h3>Dummy Game</h3>
+                        <p>Console: NES</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-<section class="hero">
-    <h1>Homebrew Games</h1>
-    <input type="text" id="searchBar" placeholder="Search by title or console...">
-</section>
+    <!-- Table of all games -->
+    <section id="allGamesTable">
+        <h2>All Games</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Title</th>
+                    <th>Console</th>
+                    <th>Developer</th>
+                    <th>Year</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><a href="game-pages/dummy-game.html">Dummy Game</a></td>
+                    <td>NES</td>
+                    <td>Dummy Dev</td>
+                    <td>1985</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
 
-<!-- GRID VIEW -->
-<section class="grid" id="gameGrid">
-    <!-- Empty grid for future games -->
-</section>
-
-<!-- TABLE VIEW -->
-<div class="table-container">
-<table id="gameTable">
-    <tr>
-        <th>Title</th>
-        <th>Console</th>
-        <th>Creator</th>
-        <th>Year</th>
-    </tr>
-    <!-- Empty table rows for future games -->
-</table>
-</div>
-
-<footer>
-    © 2026 ZAG Archive
-</footer>
-
-<script>
-// Search function for future games
-const searchBar = document.getElementById('searchBar');
-searchBar.addEventListener('keyup', function() {
-    const filter = searchBar.value.toLowerCase();
-
-    // Filter grid cards
-    const cards = document.querySelectorAll('#gameGrid .card');
-    cards.forEach(card => {
-        const title = card.querySelector('h3').textContent.toLowerCase();
-        const consoleName = card.querySelector('p').textContent.toLowerCase();
-        if(title.includes(filter) || consoleName.includes(filter)) {
-            card.style.display = '';
-        } else {
-            card.style.display = 'none';
-        }
-    });
-
-    // Filter table rows
-    const tableRows = document.querySelectorAll('#gameTable tr:not(:first-child)');
-    tableRows.forEach(row => {
-        const title = row.cells[0].textContent.toLowerCase();
-        const consoleName = row.cells[1].textContent.toLowerCase();
-        if(title.includes(filter) || consoleName.includes(filter)) {
-            row.style.display = '';
-        } else {
-            row.style.display = 'none';
-        }
-    });
-});
-</script>
-
+    <script src="assets/scripts.js"></script>
 </body>
 </html>
