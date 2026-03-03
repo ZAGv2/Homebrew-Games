@@ -5,7 +5,9 @@
 <title>Homebrew Games - ZAG Archive</title>
 <style>
   body { margin:0; font-family:'Segoe UI', sans-serif; background:#f0f2f5; color:#222; }
-  header { background:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
+
+  /* HEADER */
+  header { background:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; flex-wrap:wrap; }
   .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
   nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; }
   nav a:hover { color:#1e90ff; }
@@ -28,6 +30,7 @@
   .game-table th, .game-table td { padding:12px 15px; text-align:left; border-bottom:1px solid #ddd; font-size:14px; }
   .game-table th { background:#f7f7f7; color:#1e90ff; }
   .game-table tr:hover { background:#f0f8ff; cursor:pointer; }
+  .game-table img { width:50px; border-radius:5px; }
 
   /* FOOTER */
   footer { background:#fff; padding:30px 50px; display:flex; justify-content:space-between; flex-wrap:wrap; border-top:1px solid #ddd; color:#555; }
@@ -37,7 +40,13 @@
   footer a:hover { text-decoration:underline; }
 
   /* RESPONSIVE */
-  @media (max-width:768px){ .grid { grid-template-columns:1fr; padding:20px; } .game-table { width:100%; } header { flex-direction:column; align-items:flex-start; } header nav { margin-top:10px; } }
+  @media (max-width:768px){
+    .grid { grid-template-columns:1fr; padding:20px; }
+    .game-table { width:100%; font-size:13px; display:block; overflow-x:auto; }
+    header { flex-direction:column; align-items:flex-start; }
+    nav { margin-top:10px; }
+    nav a { margin-left:0; margin-right:15px; margin-bottom:8px; display:inline-block; }
+  }
 </style>
 </head>
 <body>
@@ -68,11 +77,21 @@
 <!-- TABLE / LIST of more games -->
 <table class="game-table">
   <thead>
-    <tr><th>Game</th><th>Console</th><th>Creator</th></tr>
+    <tr>
+      <th>Cover</th>
+      <th>Game</th>
+      <th>Console</th>
+      <th>Creator</th>
+      <th>Year</th>
+    </tr>
   </thead>
   <tbody>
     <tr onclick="window.location.href='game-pages/dummy-game.html'">
-      <td>Dummy Game</td><td>NES</td><td>Dummy Dev</td>
+      <td><img src="assets/IMG_0085.png" alt="Dummy Game Cover"></td>
+      <td>Dummy Game</td>
+      <td>NES</td>
+      <td>Dummy Dev</td>
+      <td>1985</td>
     </tr>
   </tbody>
 </table>
