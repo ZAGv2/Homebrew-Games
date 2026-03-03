@@ -4,10 +4,30 @@
 ![Releases](https://img.shields.io/github/v/release/ZAGv2/Homebrew-Games?label=Latest%20Release&sort=semver)
 
 ![Homebrew Workflow](./assets/homebrew_workflow.png)  
-*Figure 1: Homebrew Games automation workflow*
+*Figure 1: Homebrew Games automation workflow*  
+**Explanation:** Upload `GAME_NAME.zip` + `GAME_NAME.details.zip` → GitHub Action triggers `auto.js` → HTML pages generated automatically.
 
 ![Game Submission Structure](./assets/game_structure.png)  
-*Figure 2: How to submit a game (zip files and folders)*
+*Figure 2: How to submit a game (zip files and folders)*  
+**Explanation:** Each game requires two zip files:  
+1. `GAME_NAME.zip` → the actual game file  
+2. `GAME_NAME.details.zip` → contains metadata.txt, cover images, screenshots  
+Both must have matching prefixes to link correctly.
+
+![Metadata.txt Structure](./assets/metadata_txt_structure.png)  
+*Figure 3: Required format for metadata.txt inside GAME_NAME.details.zip*  
+**Explanation:** The automation system reads this metadata to generate the game pages automatically. Example:
+
+Title: Super Mario
+Console: NES
+Creator: Nintendo
+Year: 1985
+Description: This is a classic platformer where Mario saves Princess Peach.
+
+- Each key is **case-sensitive**  
+- `Description` can have multiple sentences  
+- The system uses these fields to fill the game HTML page and index
+
 ---
 
 ## Overview
@@ -15,29 +35,23 @@
 The **ZAG Archive Homebrew Games system** is a fully automated platform for hosting and managing community-made games.
 
 **Key Features:**
-- Automatic generation of HTML pages from GitHub releases
+- Automatic generation of HTML pages from GitHub releases  
 - Homebrew Games index page with:
-  - Trending grid (3 most downloaded games of the month)
-  - Complete table of all games (newest releases first)
-  - Search functionality by title or console
-- Fully mobile and desktop friendly
-- Repository stays under 1GB by storing **only metadata and HTML**, not game files
+  - Trending grid (3 most downloaded games of the month)  
+  - Complete table of all games (newest releases first)  
+  - Search functionality by title or console  
+- Fully mobile and desktop friendly  
+- Repository stays under 1GB by storing **only metadata and HTML**, not game files  
 
 ---
 
 ## Repository Structure
 
-- **assets/**  
-  - `homebrew_workflow.png` → Workflow diagram  
-  - `game_structure.png` → Game submission structure diagram  
-
+- **assets/** → Diagrams, logos, and CSS for documentation and styling  
 - **games-pages/** → Auto-generated HTML pages for each game  
-
-- `index.html` → Homebrew Games main page  
-
-- `auto.js` → Automation script to generate HTML pages  
-
-- `.github/workflows/auto.yml` → GitHub Action workflow that runs `auto.js`
+- `index.html` → Main Homebrew Games page  
+- `auto.js` → Automation script that reads releases and generates HTML pages  
+- `.github/workflows/auto.yml` → GitHub Action workflow that triggers the automation  
 
 ---
 
@@ -52,54 +66,23 @@ Each game must have **two zip files**:
 
 > Both files must exist before the automation runs.
 
-**Rules for submitting games:**
+**Steps to Submit a Game:**
 1. Prepare the two zip files with matching names.  
 2. Upload them as a **new release** on GitHub.  
 3. GitHub Action triggers `auto.js`.  
 4. Wait for the workflow to complete:
-   - HTML pages generated  
-   - Index page updated
-
----
-
-## GitHub Action Workflow
-
-- `.github/workflows/auto.yml` automatically triggers `auto.js` when a new release is published.  
-- Ensures both zip files exist before generating pages.  
-- Updates `index.html` and creates HTML pages in `games-pages/`.
-
----
-
-## Workflow Diagram
-
-![Homebrew Workflow](./assets/homebrew_workflow.png)
-
-**Explanation:**
-1. Upload `GAME_NAME.zip` + `GAME_NAME.details.zip`  
-2. GitHub Action triggers `auto.js`  
-3. Script validates files, extracts metadata/images, generates HTML pages, updates index.html  
-
----
-
-## Game Submission Structure
-
-![Game Submission Structure](./assets/game_structure.png)
-
-**Explanation:**
-- Submit two files for each game:  
-  1. `GAME_NAME.zip` → actual game  
-  2. `GAME_NAME.details.zip` → metadata + cover + screenshots  
-- Both must have the same name prefix to link correctly.
+   - HTML pages generated in `games-pages/`  
+   - `index.html` updated automatically  
 
 ---
 
 ## Benefits
 
 - Fully automated  
-- Repo stays under 1GB  
+- Repository stays under 1GB  
 - Mobile & PC friendly  
-- Supports large libraries (pagination-ready)  
-- Easy maintenance: upload release zips only
+- Supports large libraries with pagination  
+- Easy maintenance: upload release zips only  
 
 ---
 
