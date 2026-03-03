@@ -2,157 +2,61 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Homebrew Games - ZAG Archive</title>
 <style>
-  body { margin:0; font-family:'Segoe UI', sans-serif; background:#f0f2f5; color:#222; }
-  header { background:#fff; padding:15px 40px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; }
-  .site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
-  nav a { margin-left:25px; text-decoration:none; color:#333; font-weight:600; transition: color 0.2s; }
-  nav a:hover { color:#1e90ff; }
+body { margin:0; font-family:'Segoe UI', sans-serif; background:#f0f2f5; color:#222; }
 
-  .dropdown { position:relative; display:inline-block; }
-  .dropbtn { font-weight:600; background:none; border:none; cursor:pointer; color:#333; }
-  .dropdown-content {
-    display:none;
-    position:absolute;
-    background:#fff;
-    min-width:200px;
-    box-shadow:0 4px 8px rgba(0,0,0,0.1);
-    border-radius:6px;
-    margin-top:8px;
-    overflow:hidden;
-  }
-  .dropdown-content a {
-    display:block;
-    padding:10px 15px;
-    color:#333;
-    text-decoration:none;
-    font-weight:500;
-  }
-  .dropdown-content a:hover {
-    background:#f0f8ff;
-    color:#1e90ff;
-  }
-  .dropdown:hover .dropdown-content {
-    display:block;
-  }
+/* Header */
+header { background:#fff; padding:15px 30px; display:flex; justify-content:space-between; align-items:center; box-shadow:0 2px 6px rgba(0,0,0,0.1); position:sticky; top:0; z-index:100; flex-wrap:wrap; }
+.site-title { font-weight:700; font-size:20px; color:#1e90ff; text-transform:uppercase; }
+nav { display:flex; align-items:center; flex-wrap:wrap; }
+nav a { margin-left:20px; text-decoration:none; color:#333; font-weight:600; transition:0.2s; }
+nav a:hover { color:#1e90ff; }
+.dropdown { position:relative; }
+.dropbtn { margin-left:20px; font-weight:600; background:none; border:none; cursor:pointer; color:#333; font-size:16px; }
+.dropdown-content { display:none; position:absolute; background:#fff; min-width:200px; box-shadow:0 4px 8px rgba(0,0,0,0.1); border-radius:6px; margin-top:8px; overflow:hidden; }
+.dropdown-content a { display:block; padding:10px 15px; text-decoration:none; color:#333; }
+.dropdown-content a:hover { background:#f0f8ff; color:#1e90ff; }
+.dropdown:hover .dropdown-content { display:block; }
 
-  .hero { text-align:center; padding:50px 20px; }
-  .hero h1 { font-size:36px; color:#1e90ff; margin-bottom:10px; }
-  .hero p { font-size:18px; color:#555; }
+/* Search bar */
+.search-bar { max-width:500px; margin:30px auto; display:flex; }
+.search-bar input { flex:1; padding:10px 15px; border-radius:8px 0 0 8px; border:1px solid #ccc; font-size:16px; }
+.search-bar button { padding:10px 20px; border:none; border-radius:0 8px 8px 0; background:#1e90ff; color:#fff; cursor:pointer; }
 
-  .section-title {
-    text-align:center;
-    font-size:28px;
-    margin:40px 0 20px;
-    color:#1e90ff;
-  }
+/* Grid for trending games */
+.grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:20px; padding:20px 50px; }
+.card { background:#fff; padding:15px; border-radius:12px; text-align:center; box-shadow:0 6px 12px rgba(0,0,0,0.08); cursor:pointer; transition: transform 0.3s, box-shadow 0.3s; }
+.card:hover { transform:translateY(-6px); box-shadow:0 12px 18px rgba(0,0,0,0.12); }
+.card img { width:100%; border-radius:10px; margin-bottom:10px; }
+.card h3 { font-size:18px; margin-bottom:6px; color:#1e90ff; }
+.card p { font-size:14px; color:#555; }
 
-  .grid {
-    display:grid;
-    grid-template-columns:repeat(auto-fill,minmax(220px,1fr));
-    gap:20px;
-    padding:30px 50px;
-  }
+/* Table for all games */
+.game-table { width:90%; margin:20px auto 50px; border-collapse:collapse; background:#fff; border-radius:12px; overflow:hidden; box-shadow:0 6px 12px rgba(0,0,0,0.08); }
+.game-table th, .game-table td { padding:12px 15px; text-align:left; border-bottom:1px solid #ddd; font-size:14px; }
+.game-table th { background:#f7f7f7; color:#1e90ff; }
+.game-table tr:hover { background:#f0f8ff; cursor:pointer; }
 
-  .card {
-    background:#fff;
-    padding:20px;
-    border-radius:12px;
-    text-align:center;
-    box-shadow:0 6px 12px rgba(0,0,0,0.08);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor:pointer;
-  }
+/* Pagination */
+.pagination { display:flex; justify-content:center; gap:10px; margin-bottom:50px; }
+.pagination button { padding:8px 12px; border:none; background:#1e90ff; color:#fff; border-radius:6px; cursor:pointer; }
+.pagination button.disabled { background:#ccc; cursor:not-allowed; }
 
-  .card:hover {
-    transform:translateY(-6px);
-    box-shadow:0 12px 18px rgba(0,0,0,0.12);
-  }
+/* Footer */
+footer { background:#fff; padding:25px; text-align:center; border-top:1px solid #ddd; color:#555; font-size:14px; }
 
-  .card img {
-    width:100%;
-    border-radius:10px;
-    margin-bottom:12px;
-  }
-
-  .card h3 {
-    font-size:18px;
-    margin-bottom:6px;
-    color:#1e90ff;
-  }
-
-  .card p {
-    font-size:14px;
-    color:#555;
-  }
-
-  .game-table {
-    width:90%;
-    margin:20px auto 60px;
-    border-collapse:collapse;
-    background:#fff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 6px 12px rgba(0,0,0,0.08);
-  }
-
-  .game-table th, .game-table td {
-    padding:12px 15px;
-    text-align:left;
-    border-bottom:1px solid #ddd;
-    font-size:14px;
-  }
-
-  .game-table th {
-    background:#f7f7f7;
-    color:#1e90ff;
-  }
-
-  .game-table td.cover img {
-    width:60px;
-    border-radius:6px;
-  }
-
-  .game-table tr:hover {
-    background:#f0f8ff;
-    cursor:pointer;
-  }
-
-  footer {
-    background:#fff;
-    padding:30px 50px;
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    border-top:1px solid #ddd;
-    color:#555;
-  }
-
-  footer h4 {
-    margin-bottom:8px;
-    font-size:16px;
-    color:#333;
-  }
-
-  footer a {
-    text-decoration:none;
-    color:#1e90ff;
-    font-size:14px;
-    display:block;
-    margin-bottom:4px;
-  }
-
-  footer a:hover {
-    text-decoration:underline;
-  }
-
-  @media (max-width:768px){
-    header { flex-direction:column; align-items:flex-start; }
-    nav { margin-top:10px; }
-    .grid { grid-template-columns:1fr; padding:20px; }
-    .game-table { width:100%; }
-  }
+/* Responsive */
+@media (max-width:768px){
+  header { flex-direction:column; align-items:flex-start; }
+  nav { margin-top:10px; width:100%; justify-content:flex-start; }
+  nav a, .dropbtn { margin-left:0; margin-right:15px; margin-top:8px; }
+  .grid { grid-template-columns:1fr; padding:20px; }
+  .search-bar { flex-direction:column; }
+  .search-bar input, .search-bar button { width:100%; margin-bottom:10px; }
+  .game-table { width:100%; }
+}
 </style>
 </head>
 <body>
@@ -175,56 +79,34 @@
   </nav>
 </header>
 
-<section class="hero">
-  <h1>Homebrew Games Archive</h1>
-  <p>Explore community-made games for multiple consoles</p>
+<!-- Search -->
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search by title or console...">
+  <button onclick="searchGames()">Search</button>
+</div>
+
+<!-- Trending grid -->
+<section class="grid" id="trendingGrid">
+  <!-- Cards auto-populated by auto.js -->
 </section>
 
-<section>
-  <h2 class="section-title">Homebrew Games</h2>
+<!-- Table -->
+<table class="game-table" id="gamesTable">
+  <thead>
+    <tr><th>Cover</th><th>Name</th><th>Console</th><th>Creator</th><th>Year</th></tr>
+  </thead>
+  <tbody>
+    <!-- Rows auto-populated by auto.js -->
+  </tbody>
+</table>
 
-  <!-- Trending Grid (Auto System Will Fill) -->
-  <div class="grid" id="homebrew-grid">
-  </div>
-
-  <!-- Full Games Table (Auto System Will Fill) -->
-  <table class="game-table" id="homebrew-table">
-    <thead>
-      <tr>
-        <th>Cover</th>
-        <th>Game</th>
-        <th>Console</th>
-        <th>Creator</th>
-        <th>Year</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
-</section>
+<!-- Pagination -->
+<div class="pagination" id="pagination"></div>
 
 <footer>
-  <div>
-    <h4>About ZAG Archive</h4>
-    <p>A hub for homebrew games and community projects.</p>
-  </div>
-
-  <div>
-    <h4>Quick Links</h4>
-    <a href="https://zagv2.github.io/ZAGArchive-/index.html">Home</a>
-    <a href="https://zagv2.github.io/Homebrew-Games/">Homebrew Games</a>
-    <a href="https://zagv2.github.io/romhacks-patches/">ROM Hacks & Patches</a>
-    <a href="https://zagv2.github.io/ZAGArchive-/about.html">About</a>
-    <a href="https://zagv2.github.io/ZAGArchive-/contact.html">Contact</a>
-  </div>
-
-  <div>
-    <h4>Follow Us</h4>
-    <a href="#">Twitter</a>
-    <a href="#">Discord</a>
-    <a href="#">GitHub</a>
-  </div>
+© 2026 ZAG Archive - Homebrew Games
 </footer>
 
+<script src="auto.js"></script>
 </body>
 </html>
