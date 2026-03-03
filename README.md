@@ -22,13 +22,3 @@ The **ZAG Archive Homebrew Games system** automatically generates game pages fro
 
 ---
 
-## Repository Structure
-
-Homebrew-Games/
-├─ assets/
-│   ├─ homebrew_workflow.png
-│   └─ game_structure.png
-├─ games-pages/          ← Auto-generated HTML pages
-├─ index.html            ← Homebrew Games main page
-├─ auto.js               ← Automation script
-└─ .github/workflows/auto.yml
