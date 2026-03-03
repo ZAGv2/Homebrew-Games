@@ -1,1 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GAME_TITLE - ZAG Archive</title>
+<style>
+body{margin:0;font-family:'Segoe UI',sans-serif;background:#f0f2f5;color:#222;}
+header{background:#fff;padding:15px 30px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 2px 6px rgba(0,0,0,0.1);flex-wrap:wrap;}
+.site-title{font-weight:700;font-size:20px;color:#1e90ff;text-transform:uppercase;}
+nav{display:flex;flex-wrap:wrap;}
+nav a{margin-left:20px;text-decoration:none;color:#333;font-weight:600;}
+nav a:hover{color:#1e90ff;}
+.dropdown{position:relative;}
+.dropbtn{margin-left:20px;font-weight:600;background:none;border:none;cursor:pointer;color:#333;font-size:16px;}
+.dropdown-content{display:none;position:absolute;background:#fff;min-width:200px;box-shadow:0 4px 8px rgba(0,0,0,0.1);border-radius:6px;margin-top:8px;overflow:hidden;}
+.dropdown-content a{display:block;padding:10px 15px;text-decoration:none;color:#333;}
+.dropdown-content a:hover{background:#f0f8ff;color:#1e90ff;}
+.dropdown:hover .dropdown-content{display:block;}
+.container{max-width:1100px;margin:40px auto;padding:0 20px;}
+.game-header{display:flex;gap:40px;flex-wrap:wrap;align-items:flex-start;}
+.game-cover img{width:100%;max-width:320px;border-radius:12px;box-shadow:0 6px 12px rgba(0,0,0,0.1);}
+.game-info{flex:1;min-width:260px;}
+.game-info h1{margin-top:0;color:#1e90ff;font-size:28px;}
+.meta p{margin:6px 0;font-size:15px;}
+.description{margin-top:15px;line-height:1.6;color:#444;}
+.download-btn{display:inline-block;margin-top:25px;padding:12px 22px;background:#1e90ff;color:#fff;text-decoration:none;border-radius:8px;font-weight:600;transition:0.3s;}
+.download-btn:hover{background:#187bcd;}
+.screenshots{margin-top:60px;}
+.screenshots h2{color:#1e90ff;margin-bottom:20px;}
+.screenshots-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:20px;}
+.screenshots-grid img{width:100%;border-radius:10px;box-shadow:0 4px 8px rgba(0,0,0,0.08);}
+footer{margin-top:60px;padding:25px;text-align:center;background:#fff;border-top:1px solid #ddd;color:#555;font-size:14px;}
+@media(max-width:768px){
+header{flex-direction:column;align-items:flex-start;}
+nav{margin-top:10px;width:100%;justify-content:flex-start;}
+nav a,.dropbtn{margin-left:0;margin-right:15px;margin-top:8px;}
+.game-header{flex-direction:column;align-items:center;}
+.game-cover img{max-width:100%;}
+.game-info h1{text-align:center;font-size:22px;}
+.meta,.description{text-align:center;}
+.download-btn{display:block;width:100%;text-align:center;}
+.dropdown-content{position:relative;box-shadow:none;}
+}
+</style>
+</head>
+<body>
 
+<header>
+<div class="site-title">ZAG Archive</div>
+<nav>
+<a href="https://zagv2.github.io/ZAGArchive-/index.html">Home</a>
+<div class="dropdown">
+<button class="dropbtn">Sections ▼</button>
+<div class="dropdown-content">
+<a href="https://zagv2.github.io/Homebrew-Games/">Homebrew Games</a>
+<a href="https://zagv2.github.io/romhacks-patches/">ROM Hacks & Patches</a>
+</div>
+</div>
+<a href="https://zagv2.github.io/ZAGArchive-/about.html">About</a>
+<a href="https://zagv2.github.io/ZAGArchive-/contact.html">Contact</a>
+</nav>
+</header>
+
+<div class="container">
+<a class="download-btn" href="GAME_ZIP_LINK" download>← Back to Homebrew Games</a>
+
+<div class="game-header">
+<div class="game-cover">
+<img src="../games/GAME_FOLDER/cover/cover.jpg" alt="GAME_TITLE Cover">
+</div>
+<div class="game-info">
+<h1>GAME_TITLE</h1>
+<div class="meta">
+<p><strong>Console:</strong> CONSOLE_NAME</p>
+<p><strong>Creator:</strong> CREATOR_NAME</p>
+<p><strong>Year:</strong> RELEASE_YEAR</p>
+</div>
+<div class="description">GAME_DESCRIPTION</div>
+<a class="download-btn" href="GAME_ZIP_LINK" download>Download Game</a>
+</div>
+</div>
+
+<div class="screenshots">
+<h2>Screenshots</h2>
+<div class="screenshots-grid">
+<img src="../games/GAME_FOLDER/screenshots/1.jpg">
+<img src="../games/GAME_FOLDER/screenshots/2.jpg">
+<img src="../games/GAME_FOLDER/screenshots/3.jpg">
+</div>
+</div>
+</div>
+
+<footer>© 2026 ZAG Archive - Homebrew Games</footer>
+</body>
+</html>
